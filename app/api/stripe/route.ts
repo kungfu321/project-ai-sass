@@ -20,19 +20,19 @@ export async function GET() {
       }
     })
 
-    const settingsUrl = absoluteUrl("/settings");
+    const dashboardUrl = absoluteUrl("/dashboard");
     if (userSubscription?.stripeCustomerId) {
       const stripeSession = await stripe.billingPortal.sessions.create({
         customer: userSubscription.stripeCustomerId,
-        return_url: settingsUrl,
+        return_url: dashboardUrl,
       })
 
       return new NextResponse(JSON.stringify({ url: stripeSession.url }))
     }
 
     const stripeSession = await stripe.checkout.sessions.create({
-      success_url: settingsUrl,
-      cancel_url: settingsUrl,
+      success_url: dashboardUrl,
+      cancel_url: dashboardUrl,
       payment_method_types: ["card"],
       customer_email: user.emailAddresses[0].emailAddress,
       mode: "subscription",
