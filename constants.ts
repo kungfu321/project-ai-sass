@@ -46,12 +46,6 @@ export const NAVIGATIONS = [
     slug: "dashboard"
   },
   ...TOOLS,
-  {
-    title: "Settings",
-    icon: "/icons/settings.svg",
-    url: "/settings",
-    slug: "settings"
-  },
 ];
 
 export const THEME_MODES = [
