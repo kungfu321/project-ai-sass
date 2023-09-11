@@ -1,6 +1,12 @@
+import Features from "@/components/landing/features";
+import Hero from "@/components/landing/hero";
+
 const LandingPage = () => {
   return (
-    <div>LandingPage</div>
+    <div className="h-full w-full">
+      <Hero />
+      <Features />
+    </div>
   )
 }
 

@@ -15,9 +15,10 @@ import SubcriptionButton from "../subcription-button";
 export interface SidebarProps {
   className?: string;
   isProPlan?: boolean;
+  userLimitCount: number;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ className, isProPlan }) => {
+const Sidebar: React.FC<SidebarProps> = ({ className, isProPlan, userLimitCount }) => {
   const { isMinimal } = useSidebarStore();
   const { user } = useUser();
 
@@ -60,10 +61,10 @@ const Sidebar: React.FC<SidebarProps> = ({ className, isProPlan }) => {
                 !isProPlan &&
                 <div className="mb-4">
                   <div className="text-center mb-2 text-muted-foreground font-semibold">
-                    1/{MAX_FREE_COUNTS} Free Generations
+                    {userLimitCount}/{MAX_FREE_COUNTS} Free Generations
                   </div>
                   <Progress
-                    value={10}
+                    value={(userLimitCount/MAX_FREE_COUNTS) * 100}
                     className="bg-gray-950 h-3"
                     indicatorClassName="gradient-btn"
                   />

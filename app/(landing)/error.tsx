@@ -2,7 +2,7 @@
 
 const LandingError = () => {
   return (
-    <div>LandingError</div>
+    <div>Error</div>
   )
 }
 

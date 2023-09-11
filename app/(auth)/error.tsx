@@ -2,7 +2,7 @@
 
 const AuthError = () => {
   return (
-    <div>AuthError</div>
+    <div>Error</div>
   )
 }
 

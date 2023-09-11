@@ -2,7 +2,7 @@
 
 const DashboardError = () => {
   return (
-    <div>DashboardError</div>
+    <div>Error</div>
   )
 }
 
