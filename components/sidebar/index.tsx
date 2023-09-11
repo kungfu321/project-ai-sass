@@ -1,24 +1,23 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
-import Link from "next/link";
 import { UserButton, useUser } from "@clerk/nextjs";
 
 import { cn } from "@/lib/utils";
 import Logo from "@/components/logo";
-import { Button } from "@/components/ui/button";
 import { useSidebarStore } from "@/stores/sidebar-store";
 import { Progress } from "@/components/ui/progress";
 import { MAX_FREE_COUNTS } from "@/constants";
 import ThemeToggle from "./theme-toggle";
 import SidebarToggle from "./sidebar-toggle";
 import Navbar from "./navbar";
+import SubcriptionButton from "../subcription-button";
 
 export interface SidebarProps {
   className?: string;
+  isProPlan?: boolean;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ className }) => {
+const Sidebar: React.FC<SidebarProps> = ({ className, isProPlan }) => {
   const { isMinimal } = useSidebarStore();
   const { user } = useUser();
 
@@ -57,26 +56,20 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
           {
             !isMinimal &&
             <div className="border-t border-t-gray-950 pt-2">
-              <div className="mb-4">
-                <div className="text-center mb-2 text-muted-foreground font-semibold">
-                  1/{MAX_FREE_COUNTS} Free Generations
+              {
+                !isProPlan &&
+                <div className="mb-4">
+                  <div className="text-center mb-2 text-muted-foreground font-semibold">
+                    1/{MAX_FREE_COUNTS} Free Generations
+                  </div>
+                  <Progress
+                    value={10}
+                    className="bg-gray-950 h-3"
+                    indicatorClassName="gradient-btn"
+                  />
                 </div>
-                <Progress
-                  value={10}
-                  className="bg-gray-950 h-3"
-                  indicatorClassName="gradient-btn"
-                />
-              </div>
-
-              <Link href="/pricing">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-white w-full font-semibold hover:text-white border-none gradient-btn">
-                  <span className="mr-2">Upgraded to Pro</span>
-                  <Sparkles />
-                </Button>
-              </Link>
+              }
+              <SubcriptionButton isPro={isProPlan} />
             </div>
           }
         </div>

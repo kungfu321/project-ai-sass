@@ -70,7 +70,7 @@ export const checkSubscription = async () => {
       stripePriceId: true,
       stripeSubscriptionId: true,
     },
-  })
+  });
 
   if (!userSubscription) return false;
 

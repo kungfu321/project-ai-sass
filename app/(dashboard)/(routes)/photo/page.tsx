@@ -33,7 +33,7 @@ import { PHOTO_AMOUNT_OPTIONS, PHOTO_RESOLUTION_OPTIONS } from "@/constants";
 import ToolsNavigation from "@/components/dashboard/tools-navigation";
 import { useProStore } from "@/stores/pro-store";
 
-export const formSchema = z.object({
+const formSchema = z.object({
   prompt: z.string().min(1, {
     message: "Photo prompt is required"
   }),

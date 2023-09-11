@@ -24,7 +24,7 @@ import { useToast } from "@/components/ui/use-toast";
 import ToolsNavigation from "@/components/dashboard/tools-navigation";
 import { useProStore } from "@/stores/pro-store";
 
-export const formSchema = z.object({
+const formSchema = z.object({
   prompt: z.string().min(1, {
     message: "Photo prompt is required"
   }),

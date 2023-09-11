@@ -2,7 +2,6 @@
 
 import { Send } from "lucide-react";
 import { useRef, useState } from "react";
-import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,7 +24,7 @@ import { useToast } from "@/components/ui/use-toast";
 import ToolsNavigation from "@/components/dashboard/tools-navigation";
 import { useProStore } from "@/stores/pro-store";
 
-export const formSchema = z.object({
+const formSchema = z.object({
   prompt: z.string().min(1, {
     message: "Prompt is required"
   }),
