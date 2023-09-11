@@ -34,7 +34,8 @@ export async function POST(req: Request) {
 
     const reachToLimit = await checkUserLimit();
 
-    if (!reachToLimit) {
+    const isPro = await checkSubscription();
+    if (!reachToLimit && !isPro) {
       return NextResponse.json({ message: "You are reach to limit. Please upgrade to higher plan.", status: 403 }, { status: 403 });
     }
 
@@ -46,7 +47,6 @@ export async function POST(req: Request) {
 
     const stream = OpenAIStream(response, {
       onCompletion: async () => {
-        const isPro = await checkSubscription();
         if (!isPro) {
           await incrementUserLimit();
         }

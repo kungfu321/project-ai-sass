@@ -27,8 +27,9 @@ export async function POST(req: Request) {
     }
 
     const reachToLimit = await checkUserLimit();
+    const isPro = await checkSubscription();
 
-    if (!reachToLimit) {
+    if (!reachToLimit && !isPro) {
       return NextResponse.json({ message: "You are reach to limit. Please upgrade to higher plan.", status: 403 }, { status: 403 });
     }
 
@@ -38,7 +39,6 @@ export async function POST(req: Request) {
       size: resolution,
     });
 
-    const isPro = await checkSubscription();
     if (!isPro) {
       await incrementUserLimit();
     }
