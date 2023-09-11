@@ -58,6 +58,7 @@
   },
   "devDependencies": {
     "@types/react-syntax-highlighter": "^15.5.7",
+    "encoding": "^0.1.13",
     "prisma": "^5.2.0"
   }
 }

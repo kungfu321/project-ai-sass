@@ -8,11 +8,11 @@ import {
   DialogContent,
 } from "@/components/ui/dialog";
 import { useProStore } from "@/stores/pro-store";
-import PlanItem from "./plan-item";
-import { useToast } from "../ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
+import { Button } from "@/components/ui/button";
 
 const UpgradeProModal = () => {
-  const { isOpen } = useProStore();
+  const { isOpen, handleCloseProModal } = useProStore();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
@@ -34,23 +34,18 @@ const UpgradeProModal = () => {
 
   return (
     <Dialog open={isOpen}>
-      <DialogContent>
-        <div className="flex items-center space-x-4">
-          <PlanItem
-            title="Pro"
-            onClick={handleSubcribe}
-            description="Basic chat functionality"
-            highlight="Free forever"
-            price={1000}
-            loading={loading}
-            features={[
-              "Email support",
-              "Unlimited generations",
-              "Access to AI capabilities"
-            ]}
-            buttonText="Upgraded to Pro"
-          />
-        </div>
+      <DialogContent
+        onClose={handleCloseProModal}
+        showOverlay>
+        <Button
+          variant="outline"
+          size="lg"
+          disabled={loading}
+          onClick={handleSubcribe}
+          className="text-white w-full font-semibold hover:text-white border-none gradient-btn"
+        >
+          <span className="mr-2">Upgrade to Pro now</span>
+        </Button>
       </DialogContent>
     </Dialog>
   )
