@@ -92,32 +92,49 @@ const VideoPage = () => {
     }
   }
 
+  const handleClearChat = () => {
+    setMessages([]);
+  }
+
   return (
     <div className="h-full relative flex flex-col justify-between">
       <div
         ref={containerRef}
-        className="h-[calc(100vh-180px)] overflow-y-auto space-y-10 scroll-smooth">
+        className="h-[calc(100vh-180px)] relative overflow-y-auto space-y-10 scroll-smooth">
         {messages.length > 0
-          ? messages.map(m => (
-            <div key={m.id} className="whitespace-pre-wrap">
-              {m.role === 'user' ?
-                <UserMessage>{m.content}</UserMessage>
-                :
-                <AiResponse>
-                  {
-                    m.content ? <div className={cn(
-                      "block mb-4 space-y-4",
-                      "lg:flex lg:flex-wrap lg:items-center lg:space-x-4 lg:space-y-0"
-                    )}>
-                      <video src={m.content} width="750" height="500" controls />
-                    </div>
-                      :
-                      <Loading />
+          ? <>
+            {
+              messages.map(m => (
+                <div key={m.id} className="whitespace-pre-wrap">
+                  {m.role === 'user' ?
+                    <UserMessage>{m.content}</UserMessage>
+                    :
+                    <AiResponse>
+                      {
+                        m.content ? <div className={cn(
+                          "block mb-4 space-y-4",
+                          "lg:flex lg:flex-wrap lg:items-center lg:space-x-4 lg:space-y-0"
+                        )}>
+                          <video src={m.content} width="750" height="500" controls />
+                        </div>
+                          :
+                          <Loading />
+                      }
+                    </AiResponse>
                   }
-                </AiResponse>
-              }
+                </div>
+              ))
+            }
+            <div className="absolute left-0 bottom-0 text-right w-full pr-3">
+              <Button
+                size="sm"
+                onClick={handleClearChat}
+                variant="outline"
+              >
+                Clear chat
+              </Button>
             </div>
-          ))
+          </>
           : <ToolsNavigation />}
       </div>
       <div className="mr-2">

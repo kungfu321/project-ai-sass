@@ -15,7 +15,16 @@ import { useProStore } from "@/stores/pro-store";
 const ConversationPage = () => {
   const { handleOpenOrCloseProModal } = useProStore();
   const containerRef = useRef<HTMLDivElement>(null);
-  const { messages, input, handleInputChange, handleSubmit, isLoading, stop, error } = useChat({
+  const {
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+    isLoading,
+    stop,
+    error,
+    setMessages
+  } = useChat({
     api: "/api/conversation"
   });
 
@@ -34,25 +43,42 @@ const ConversationPage = () => {
     }
   }, [messages]);
 
+  const handleClearChat = () => {
+    setMessages([]);
+  }
+
   return (
     <div className="h-full relative flex flex-col justify-between">
       <div
         ref={containerRef}
-        className="h-[calc(100vh-180px)] overflow-y-auto space-y-10 scroll-smooth">
+        className="h-[calc(100vh-180px)] relative overflow-y-auto space-y-10 scroll-smooth">
         {messages.length > 0
-          ? messages.map(m => (
-            <div key={m.id} className="whitespace-pre-wrap">
-              {m.role === 'user' ?
-                <UserMessage>
-                  <MarkdownResponse content={m.content} />
-                </UserMessage>
-                :
-                <AiResponse>
-                  <MarkdownResponse content={m.content} />
-                </AiResponse>
-              }
+          ? <>
+            {
+              messages.map(m => (
+                <div key={m.id} className="whitespace-pre-wrap">
+                  {m.role === 'user' ?
+                    <UserMessage>
+                      <MarkdownResponse content={m.content} />
+                    </UserMessage>
+                    :
+                    <AiResponse>
+                      <MarkdownResponse content={m.content} />
+                    </AiResponse>
+                  }
+                </div>
+              ))
+            }
+            <div className="absolute left-0 bottom-0 text-right w-full pr-3">
+              <Button
+                size="sm"
+                onClick={handleClearChat}
+                variant="outline"
+              >
+                Clear chat
+              </Button>
             </div>
-          ))
+          </>
           : <ToolsNavigation />}
       </div>
       <div className="mr-2">
