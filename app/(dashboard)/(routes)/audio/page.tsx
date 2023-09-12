@@ -100,7 +100,7 @@ const AudioPage = () => {
     <div className="h-full relative flex flex-col justify-between">
       <div
         ref={containerRef}
-        className="h-[calc(100vh-180px)] relative overflow-y-auto space-y-10 scroll-smooth">
+        className="h-[calc(100vh-180px)] overflow-y-auto space-y-10 scroll-smooth">
         {messages.length > 0
           ? <>
             {
@@ -125,7 +125,7 @@ const AudioPage = () => {
                 </div>
               ))
             }
-            <div className="absolute left-0 bottom-0 text-right w-full pr-3">
+            <div className="absolute left-0 bottom-20 text-right w-full pr-3">
               <Button
                 size="sm"
                 onClick={handleClearChat}
@@ -137,7 +137,7 @@ const AudioPage = () => {
           </>
           : <ToolsNavigation />}
       </div>
-      <div className="mr-2">
+      <div className="mb-[13px]">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}

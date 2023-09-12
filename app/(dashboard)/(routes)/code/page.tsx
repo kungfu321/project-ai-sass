@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import MarkdownResponse from "@/components/dashboard/markdown-response";
 import ToolsNavigation from "@/components/dashboard/tools-navigation";
 import { useProStore } from "@/stores/pro-store";
+import { cn } from "@/lib/utils";
 
 const CodePage = () => {
   const { handleOpenOrCloseProModal } = useProStore();
@@ -51,7 +52,10 @@ const CodePage = () => {
     <div className="h-full relative flex flex-col justify-between">
       <div
         ref={containerRef}
-        className="h-[calc(100vh-180px)] relative overflow-y-auto space-y-10 scroll-smooth">
+        className={cn(
+          "h-[calc(100vh-180px)] pl-4 overflow-y-auto space-y-10 scroll-smooth",
+          "lg:pl-0"
+        )}>
         {messages.length > 0
           ? <>
             {
@@ -69,7 +73,7 @@ const CodePage = () => {
                 </div>
               ))
             }
-            <div className="absolute left-0 bottom-0 text-right w-full pr-3">
+            <div className="absolute left-0 bottom-20 text-right w-full pr-3">
               <Button
                 size="sm"
                 onClick={handleClearChat}
@@ -81,7 +85,7 @@ const CodePage = () => {
           </>
           : <ToolsNavigation />}
       </div>
-      <div className="mr-2">
+      <div className="mb-[13px]">
         <form
           onSubmit={isLoading ? stop : handleSubmit}
           className="flex items-center w-full relative"

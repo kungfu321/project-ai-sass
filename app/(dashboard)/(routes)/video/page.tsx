@@ -137,7 +137,7 @@ const VideoPage = () => {
           </>
           : <ToolsNavigation />}
       </div>
-      <div className="mr-2">
+      <div className="mb-[13px]">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
