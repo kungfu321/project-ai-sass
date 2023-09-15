@@ -1,3 +1,5 @@
+![thumbnail](https://github.com/kungfu321/project-ai-sass/assets/10558363/656fe339-07c7-4be8-b4d2-c65bc0485eea)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
