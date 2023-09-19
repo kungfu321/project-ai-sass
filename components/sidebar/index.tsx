@@ -10,7 +10,7 @@ import { MAX_FREE_COUNTS } from "@/constants";
 import ThemeToggle from "./theme-toggle";
 import SidebarToggle from "./sidebar-toggle";
 import Navbar from "./navbar";
-import SubcriptionButton from "../subcription-button";
+import SubscriptionButton from "../subscription-button";
 
 export interface SidebarProps {
   className?: string;
@@ -46,7 +46,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className, isProPlan, userLimitCount 
       )}>
         <div className="mb-4 p-4 rounded-lg bg-gray-900">
           <div className="mb-4 flex items-center">
-            <UserButton />
+            <UserButton afterSignOutUrl="/" />
             {
               !isMinimal &&
               <span className="text-sm ml-4">
@@ -70,7 +70,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className, isProPlan, userLimitCount 
                   />
                 </div>
               }
-              <SubcriptionButton isPro={isProPlan} />
+              <SubscriptionButton isPro={isProPlan} />
             </div>
           }
         </div>

@@ -5,7 +5,7 @@ import {
   DialogContent,
 } from "@/components/ui/dialog";
 import { useProStore } from "@/stores/pro-store";
-import SubcriptionButton from "../subcription-button";
+import SubscriptionButton from "../subscription-button";
 
 interface UpgradeProModalProps {
   isProPlan?: boolean;
@@ -19,7 +19,7 @@ const UpgradeProModal: React.FC<UpgradeProModalProps> = ({ isProPlan }) => {
       <DialogContent
         onClose={handleCloseProModal}
         showOverlay>
-        <SubcriptionButton isPro={isProPlan} />
+        <SubscriptionButton isPro={isProPlan} />
       </DialogContent>
     </Dialog>
   )

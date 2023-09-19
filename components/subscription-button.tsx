@@ -7,11 +7,11 @@ import { Button } from "./ui/button";
 import axios from "axios";
 import { Sparkles } from "lucide-react";
 
-interface SubcriptionButtonProps {
+interface SubscriptionButtonProps {
   isPro?: boolean;
 }
 
-const SubcriptionButton: React.FC<SubcriptionButtonProps> = ({ isPro }) => {
+const SubscriptionButton: React.FC<SubscriptionButtonProps> = ({ isPro }) => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
@@ -40,7 +40,7 @@ const SubcriptionButton: React.FC<SubcriptionButtonProps> = ({ isPro }) => {
         onClick={handleSubcribe}
         className="text-white w-full font-semibold hover:text-white border-none gradient-btn"
       >
-        <span className="mr-2">{isPro ? "Manage Subcription" : "Upgrade to Pro"}</span>
+        <span className="mr-2">{isPro ? "Manage Subscription" : "Upgrade to Pro"}</span>
         {
           !isPro &&
           <Sparkles />
@@ -50,4 +50,4 @@ const SubcriptionButton: React.FC<SubcriptionButtonProps> = ({ isPro }) => {
   )
 }
 
-export default SubcriptionButton;
+export default SubscriptionButton;
