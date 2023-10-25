@@ -61,3 +61,5 @@ npx prisma db push
 ```bash
 yarn dev
 ```
+
+Some code snippets were referenced from: [https://github.com/AntonioErdeljac/next13-ai-saas](https://github.com/AntonioErdeljac/next13-ai-saas)
