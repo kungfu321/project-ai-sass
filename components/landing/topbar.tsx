@@ -9,12 +9,12 @@ const Topbar = () => {
       <div className="max-w-5xl mx-auto w-full flex items-center justify-between">
         <Logo />
         <div>
-          <Link href="/dashboard">
+         <a href="#features">
             <Button className="gradient-btn">
               <span className="mr-2">Get Started</span>
               <Sparkles />
             </Button>
-          </Link>
+          </a>
         </div>
       </div>
     </div>
